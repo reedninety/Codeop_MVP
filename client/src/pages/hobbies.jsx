@@ -1,7 +1,7 @@
 import React from 'react'
 
-export default function hobbies() {
+export default function Hobbies() {
   return (
-    <div>hobbies</div>
+    <div>Hobbies</div>
   )
 }

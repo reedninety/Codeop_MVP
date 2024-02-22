@@ -19,7 +19,7 @@ CREATE TABLE events(
     `event_location` VARCHAR(40) NOT NULL,
     `event_description` LONGTEXT NOT NULL,
     `event_schedule` DATETIME NOT NULL,
-    `hobby_id` BIGINT UNSIGNED NULL,
+    `hobby_id` BIGINT UNSIGNED NOT NULL,
     `event_enviro` TINYINT NOT NULL,
     `event_crowd` VARCHAR(255) NOT NULL,
     `skill_level` VARCHAR(40) NOT NULL,

@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react'
 import './App.css'
 import { Routes, Route, Link } from "react-router-dom";
+import Hobbies from "./pages/Hobbies";
+import Events from "./pages/Events";
 
 export default function App() {
   const [events, setEvents] = useState([]);
@@ -9,43 +11,28 @@ export default function App() {
 
   useEffect(() => {getEvents();}, []);
 
-  // const getEvents = () => {
-  //   fetch("/events")
-  //   .then((response) => response.json())
-  //   .then((events) => { setEvents(events)
-  //     console.log(events);
-  //   })
-  //   .catch((error) => {
-  //     console.log(error);
-  // });
-  // }
+  const getEvents = () => {
+    fetch("/api/events")
+    .then((response) => response.json())
+    .then((events) => { setEvents(events)
+      console.log(events);
+    })
+    .catch((error) => {
+      console.log(error);
+  });
+  }
 
-  const getEvents = async () => {
-    let options = {
-      method: "GET",
-    };
-
-    try {
-      let response = await fetch(`/users/events`, options);
-      console.log(response);
-      if (response.ok) {
-        let data = await response.json();
-        console.log("hello");
-        setEvents(data);
-      } else {
-        console.log(`server error: ${response.status} ${response.statusText}`);
-        console.log("hi");
-      }
-    } catch (err) {
-      console.log(`network error: ${err.message}`);
-      console.log("hola");
-    }
-  };
   return (
     <div className = "App">
       <h1>
-        MVP Homepage
+        Saturn's Always Somewhere 
       </h1>
+
+      <Routes>
+        <Route path="/all-events" element={<Events />} />
+        <Route path="/hobbies" element={<Hobbies />} />
+        <Route path="*" element={<Error404View />} />
+      </Routes>
       <form>
         <input>
         </input><button>Search</button>
@@ -53,7 +40,7 @@ export default function App() {
       <ul>
         {events.map((event) => (
           <li key={event.id}>
-            {event.event_name} {event.description}
+            {event.event_name} {event.event_description}
           </li>
         ))}
       </ul>
