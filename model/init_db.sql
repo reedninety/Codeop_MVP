@@ -19,7 +19,7 @@ CREATE TABLE events(
     `event_location` VARCHAR(40) NOT NULL,
     `event_description` LONGTEXT NOT NULL,
     `event_schedule` DATETIME NOT NULL,
-    `hobby_id` BIGINT UNSIGNED NOT NULL,
+    `hobby_id` BIGINT UNSIGNED NULL,
     `event_enviro` TINYINT NOT NULL,
     `event_crowd` VARCHAR(255) NOT NULL,
     `skill_level` VARCHAR(40) NOT NULL,
@@ -58,3 +58,5 @@ INSERT INTO events (event_name, event_price, event_location, event_description, 
 INSERT INTO events (event_name, event_price, event_location, event_description, event_schedule, hobby_id, event_enviro, event_crowd, skill_level, equip_needed) VALUES ('Running club', '0', 'Retiro park, Madrid', 'running club', '2024-03-10 18:00:00', '1', '1', 'group activity', 'intermediate', '1');
 
 INSERT INTO events (event_name, event_price, event_location, event_description, event_schedule, hobby_id, event_enviro, event_crowd, skill_level, equip_needed) VALUES ('Bouldering group', '10', 'Climbing centre, Madrid', 'relaxed climbing group that meets up weekly - can work on problems together or go solo', '2024-02-28 21:00:00', '2', '-1', 'group activity', 'all-levels', '-1');
+
+INSERT INTO users (username) VALUES ('testUser');
