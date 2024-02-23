@@ -4,14 +4,23 @@ const db = require("../model/helper");
 
 
 
-  //GET event result(s)
-  router.get("/", function (req, res) {
-    db("SELECT * FROM events ORDER BY id ASC;")
-    .then(results => {
-        res.send(results.data);
-      })
-      .catch(err => res.status(500).send(err));
-  });
+  // //GET event result(s)
+  // const allEvents = router.get("/", function (req, res) {
+  //   db("SELECT * FROM events ORDER BY id ASC;")
+  //   .then(results => {
+  //       res.send(results.data);
+  //     })
+  //     .catch(err => res.status(500).send(err));
+  // });
+
+    //GET event result(s)
+   router.get("/", async function (req, res) {
+    try{
+       const allEvents = await db("SELECT * FROM events ORDER BY id ASC;")
+          res.send(allEvents.data);
+      } catch (err) {res.status(500).send(err);
+      }
+    });
 
   //POST create new event
   router.post("/", async function(req, res) {
