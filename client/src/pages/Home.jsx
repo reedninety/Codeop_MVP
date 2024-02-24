@@ -4,7 +4,7 @@ export default function Home() {
   return (
     <div>
         <h1>
-        Hobby Finder
+        Saturn's Always Somewhere
       </h1>
     </div>
   )

@@ -1,5 +1,7 @@
 import React from 'react'
 import { useEffect, useState } from 'react'
+import { Routes, Route, Link } from 'react-router-dom'
+
 
 export default function AllHobbies() {
 
@@ -16,7 +18,7 @@ export default function AllHobbies() {
         .catch((error) => {
           console.log(error);
       });
-      }
+      };
 
       const hobbyCategories = () => {
         fetch("api/hobbies/:id")
@@ -27,17 +29,26 @@ export default function AllHobbies() {
         .catch((error) => {
           console.log(error);
       });
-      }
+      };
+
+      const takeToForm = () => {
+        console.log("I've been clicked!")
+      };
+
+
   return (
     <div>
     <h1>Hobby Categories</h1>
     <ul>
+      <dl>
     {hobbies.map((hobby) => (
-      <h3 key={hobby.id}>
-        {hobby.hobby_category} 
+      <h3 key={hobby.id} onClick={takeToForm}>
+           {hobby.hobby_category}
       </h3>
     ))}
+    </dl>
   </ul>
+
   </div>
   )
 }

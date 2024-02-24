@@ -5,6 +5,7 @@ import Home from "./pages/Home";
 import AllHobbies from "./pages/AllHobbies";
 import EventList from "./pages/EventList";
 
+
 export default function App() {
 
   return (
