@@ -1,4 +1,4 @@
---
+
 -- Drop Tables
 --
 SET FOREIGN_KEY_CHECKS=0;
@@ -18,7 +18,8 @@ CREATE TABLE events(
     `event_price` INT NOT NULL,
     `event_location` VARCHAR(40) NOT NULL,
     `event_description` LONGTEXT NOT NULL,
-    `event_schedule` DATETIME NOT NULL,
+    `event_time` TIME NOT NULL,
+    `event_date` DATE NOT NULL,
     `hobby_id` BIGINT UNSIGNED NOT NULL,
     `event_enviro` TINYINT NOT NULL,
     `event_crowd` VARCHAR(255) NOT NULL,
@@ -53,10 +54,10 @@ INSERT INTO hobbies (hobby_category, description) VALUES ('Outdoor sports', 'Phy
 
 INSERT INTO hobbies (hobby_category, description) VALUES ('Indoor sports', 'Physical events regardles of the weather - can be done solo or in a group. great way to take some time away from a screen and meet new people, while getting some exercise to keep those endorphins running');
 
-INSERT INTO events (event_name, event_price, event_location, event_description, event_schedule, hobby_id, event_enviro, event_crowd, skill_level, equip_needed) VALUES ('Football Game', '5', 'Madrid', 'Relaxed football game - all abilities welcome', '2024-03-07 21:00:00', '1', '1', 'group activity', 'all-levels', '-1');
+INSERT INTO events (event_name, event_price, event_location, event_description, event_date, event_time, hobby_id, event_enviro, event_crowd, skill_level, equip_needed) VALUES ('Football Game', '5', 'Madrid', 'Relaxed football game - all abilities welcome', '2024-03-07', '21:00:00', '1', '1', 'group activity', 'all-levels', '-1');
 
-INSERT INTO events (event_name, event_price, event_location, event_description, event_schedule, hobby_id, event_enviro, event_crowd, skill_level, equip_needed) VALUES ('Running club', '0', 'Retiro park, Madrid', 'running club', '2024-03-10 18:00:00', '1', '1', 'group activity', 'intermediate', '1');
+INSERT INTO events (event_name, event_price, event_location, event_description, event_date, event_time, hobby_id, event_enviro, event_crowd, skill_level, equip_needed) VALUES ('Running club', '0', 'Retiro park, Madrid', 'running club', '2024-03-10', '18:00:00', '1', '1', 'group activity', 'intermediate', '1');
 
-INSERT INTO events (event_name, event_price, event_location, event_description, event_schedule, hobby_id, event_enviro, event_crowd, skill_level, equip_needed) VALUES ('Bouldering group', '10', 'Climbing centre, Madrid', 'relaxed climbing group that meets up weekly - can work on problems together or go solo', '2024-02-28 21:00:00', '2', '-1', 'group activity', 'all-levels', '-1');
+INSERT INTO events (event_name, event_price, event_location, event_description, event_date, event_time, hobby_id, event_enviro, event_crowd, skill_level, equip_needed) VALUES ('Bouldering group', '10', 'Climbing centre, Madrid', 'relaxed climbing group that meets up weekly - can work on problems together or go solo', '2024-02-28', '21:00:00', '2', '-1', 'group activity', 'all-levels', '-1');
 
 INSERT INTO users (username) VALUES ('testUser');
