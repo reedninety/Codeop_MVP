@@ -6,7 +6,13 @@ DROP TABLE if exists events;
 DROP TABLE if exists user_faves;
 DROP TABLE if exists hobbies;
 DROP TABLE if exists users;
+<<<<<<< HEAD
 SET FOREIGN_KEY_CHECKS=1; 
+||||||| eb7ee69
+=======
+SET FOREIGN_KEY_CHECKS=1; 
+
+>>>>>>> 289a1c89caf444370348135898e1e7f997ed2eaf
 
 --
 -- Create Tables
@@ -15,6 +21,7 @@ SET FOREIGN_KEY_CHECKS=1;
 CREATE TABLE events(
     `id` BIGINT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
     `event_name` VARCHAR(40) NOT NULL,
+<<<<<<< HEAD
     `event_price` INT,
     `event_location` VARCHAR(40),
     `event_description` LONGTEXT,
@@ -25,6 +32,29 @@ CREATE TABLE events(
     `event_crowd` VARCHAR(255),
     `skill_level` VARCHAR(40),
     `equip_needed` TINYINT(1)
+||||||| eb7ee69
+    `event_price` INT NOT NULL,
+    `event_location` VARCHAR(40) NOT NULL,
+    `event_description` LONGTEXT NOT NULL,
+    `event_time` TIME NOT NULL,
+    `event_date` DATE NOT NULL,
+    `hobby_id` BIGINT UNSIGNED NOT NULL,
+    `event_enviro` TINYINT NOT NULL,
+    `event_crowd` VARCHAR(255) NOT NULL,
+    `skill_level` VARCHAR(40) NOT NULL,
+    `equip_needed` TINYINT(1) NOT NULL
+=======
+    `event_price` INT ,
+    `event_location` VARCHAR(40) ,
+    `event_description` LONGTEXT ,
+    `event_time` TIME ,
+    `event_date` DATE ,
+    `hobby_id` BIGINT UNSIGNED ,
+    `event_enviro` TINYINT ,
+    `event_crowd` VARCHAR(255) ,
+    `skill_level` VARCHAR(40) ,
+    `equip_needed` TINYINT(1) 
+>>>>>>> 289a1c89caf444370348135898e1e7f997ed2eaf
 );
 CREATE TABLE users(
     `id` BIGINT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
@@ -33,7 +63,13 @@ CREATE TABLE users(
 CREATE TABLE hobbies(
     `id` BIGINT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
     `hobby_category` VARCHAR(255) NOT NULL,
+<<<<<<< HEAD
     `description` LONGTEXT
+||||||| eb7ee69
+    `description` LONGTEXT NOT NULL
+=======
+    `description` LONGTEXT 
+>>>>>>> 289a1c89caf444370348135898e1e7f997ed2eaf
 );
 CREATE TABLE user_faves(
     `user_id` BIGINT UNSIGNED NOT NULL,
