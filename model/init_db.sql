@@ -3,10 +3,10 @@
 --
 SET FOREIGN_KEY_CHECKS=0;
 DROP TABLE if exists events;
-SET FOREIGN_KEY_CHECKS=1; 
 DROP TABLE if exists user_faves;
 DROP TABLE if exists hobbies;
 DROP TABLE if exists users;
+SET FOREIGN_KEY_CHECKS=1; 
 
 --
 -- Create Tables
@@ -15,16 +15,16 @@ DROP TABLE if exists users;
 CREATE TABLE events(
     `id` BIGINT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
     `event_name` VARCHAR(40) NOT NULL,
-    `event_price` INT NOT NULL,
-    `event_location` VARCHAR(40) NOT NULL,
-    `event_description` LONGTEXT NOT NULL,
-    `event_time` TIME NOT NULL,
-    `event_date` DATE NOT NULL,
-    `hobby_id` BIGINT UNSIGNED NOT NULL,
-    `event_enviro` TINYINT NOT NULL,
-    `event_crowd` VARCHAR(255) NOT NULL,
-    `skill_level` VARCHAR(40) NOT NULL,
-    `equip_needed` TINYINT(1) NOT NULL
+    `event_price` INT,
+    `event_location` VARCHAR(40),
+    `event_description` LONGTEXT,
+    `event_time` TIME,
+    `event_date` DATE,
+    `hobby_id` BIGINT UNSIGNED,
+    `event_enviro` TINYINT,
+    `event_crowd` VARCHAR(255),
+    `skill_level` VARCHAR(40),
+    `equip_needed` TINYINT(1)
 );
 CREATE TABLE users(
     `id` BIGINT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
@@ -33,7 +33,7 @@ CREATE TABLE users(
 CREATE TABLE hobbies(
     `id` BIGINT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
     `hobby_category` VARCHAR(255) NOT NULL,
-    `description` LONGTEXT NOT NULL
+    `description` LONGTEXT
 );
 CREATE TABLE user_faves(
     `user_id` BIGINT UNSIGNED NOT NULL,
