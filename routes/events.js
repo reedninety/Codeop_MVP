@@ -36,17 +36,11 @@ const db = require("../model/helper");
   router.post("/", async function(req, res) {
     try{
         const { event_name,
-           event_price,
             event_location,
             event_description,
-            event_date, event_time, 
-            event_enviro, 
-            event_crowd, 
-            skill_level, 
-            equip_needed,
            } = req.body;
             await db(
-              `INSERT INTO events (event_name, event_price, event_location, event_description, event_date, event_time, event_enviro, event_crowd, skill_level, equip_needed) VALUES ("${event_name}", "${event_price}", "${event_location}", "${event_description}", "${event_date}", ${event_time} "${event_enviro}", "${event_crowd}", "${skill_level}", "${equip_needed}")`
+              `INSERT INTO events (event_name, event_location, event_description) VALUES ("${event_name}", "${event_location}", "${event_description}");`
               );
     res.status(201).send({ message: "Event was inserted" });
 } catch (err) {

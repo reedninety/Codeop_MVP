@@ -32,19 +32,19 @@ export default function SearchForm() {
       }));
     };
 
-    // const getEvents = () => {
-    //   // const { event_location } = input;
-    //   // get events filtered by input
-    //   fetch("/api/events?event_location=" + input.event_location)
-    //   .then((response) => response.json())
-    //   .then((events) => {
-    //     setEvents(events)
-    //     console.log(events);
-    //   })
-    //   .catch((error) => {
-    //     console.log(error);
-    //   });
-    //   };
+    const getEvents = () => {
+      // const { event_location } = input;
+      // get events filtered by input
+      fetch("/api/events?event_location=" + input.event_location)
+      .then((response) => response.json())
+      .then((events) => {
+        setEvents(events)
+        console.log(events);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+      };
 
     //attempt with chaining 
       // const getEvents = () => {
@@ -98,16 +98,16 @@ export default function SearchForm() {
 
   //attempt with promise.all
 
-    const getEvents = () => {
-      Promise.all([locationRequest, skillRequest])
-      .then((events) => {
-          setEvents(events);
+    // const getEvents = () => {
+    //   Promise.all([locationRequest, skillRequest])
+    //   .then((events) => {
+    //       setEvents(events);
 
-      })
-      .catch(error => {
-        console.error(error);
-     });
-        }
+    //   })
+    //   .catch(error => {
+    //     console.error(error);
+    //  });
+    //     }
   
     const handleSubmit = (event) => {
       event.preventDefault();
