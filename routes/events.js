@@ -37,9 +37,9 @@ const db = require("../model/helper");
 
 router.get("/results", async function (req, res, next){
   try { 
-    const {event_location, event_date, event_time, event_enviro, event_crowd, skill_level, equip_needed} = req.body;
-    const searchResult = await db(`SELECT (event_name, event_description FROM events WHERE event_location = "${event_location}" AND event_date = '${event_date}' AND event_time = "${event_time}" AND event_enviro = ${event_enviro} AND event_crowd = "${event_crowd}"AND skill_level = "${skill_level}" AND equip_needed = ${equip_needed};`)
-//want to add price in between once i've sorted the form out
+    const {event_location, event_date, event_time, event_enviro, event_crowd, skill_level, equip_needed} = req.query;
+    const searchResult = await db(`SELECT (event_name, event_description FROM events WHERE event_location = "${event_location}" AND event_date = '${event_date}' AND event_time = "${event_time}" AND event_enviro = ${event_enviro} AND event_crowd = "${event_crowd}" AND skill_level = "${skill_level}" AND equip_needed = ${equip_needed};`)
+//want to add price in BETWEEN once i've sorted the form out
 res.send(searchResult.data);
   } catch (err) {res.status(500).send(err);
   }
