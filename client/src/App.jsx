@@ -14,7 +14,7 @@ export default function App() {
           {/* <Link to="/all-hobbies"> Hobby List </Link> */}
           {/* <Link to="/event-list"> All Events </Link> */}
           <Link to="/event-search"> All Hobbies </Link>
-          <Link to="/new-event"> Create new Event </Link>
+          <Link to="/new-event"> Create New Event </Link>
       </nav>
 
       <Routes>

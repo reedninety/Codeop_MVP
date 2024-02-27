@@ -11,7 +11,7 @@ event_name: "",
   event_description: "",
   skill_level: "",
   hobby_id: 0,
-  equip_needed: true,
+  equip_needed: "",
 });
 
 useEffect(() => {getHobbies();}, []);
@@ -38,6 +38,7 @@ const getHobbies = () => {
 
       const data = await response.json();
       console.log(data);
+      
 
     //   setNewEvent(data);
     } catch (err) {
@@ -71,6 +72,7 @@ const getHobbies = () => {
             name="event_name"
             id="event_name"
             type="text"
+            className="rounded"
             value={input.event_name}
             onChange={handleChange}
           />
@@ -79,6 +81,7 @@ const getHobbies = () => {
             name="event_description"
             id="event_description"
             type="text"
+            className="rounded"
             value={input.event_description}
             onChange={handleChange}
           />
@@ -87,6 +90,7 @@ const getHobbies = () => {
             name="event_location"
             id="event_location"
             type="text"
+            className="rounded"
             value={input.event_location}
             onChange={handleChange}
           />
@@ -96,6 +100,7 @@ const getHobbies = () => {
             name="skill_level"
             id="skill_level"
             type="text"
+            className="rounded"
             value={input.skill_level}
             onChange={handleChange}
             />
@@ -105,6 +110,7 @@ const getHobbies = () => {
        <select name="hobby_id"
             id="hobby_id"
             type="text"
+            className="rounded"
             value={input.hobby_id}
             onChange={handleChange}>
            {hobbies.map((hobby) => (
@@ -118,12 +124,13 @@ const getHobbies = () => {
       Do participents need their own equipment?
        <select name="equip_needed"
             id="equip_needed"
+            className="rounded"
             value={input.equip_needed}
             onChange={handleChange}>
-      <option value={true}>
+      <option value={"1"}>
            Yes
       </option>
-      <option value={false}>
+      <option value={"0"}>
            No
       </option>
        </select>

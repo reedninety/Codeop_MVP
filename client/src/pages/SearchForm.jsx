@@ -57,40 +57,48 @@ export default function SearchForm() {
       <div>
         <h1> Search Form </h1>
         <form onSubmit={handleSubmit}>
-          <label htmlFor="event_location">Event Location</label>
+          <div>
+          <label htmlFor="event_location">Event Location </label>
           <input
             name="event_location"
             placeholder="City Name"
             id="event_location"
             type="text"
-            className="info"
+            className="rounded mb-3"
             value={input.event_location}
             onChange={handleChange}
           />
-          <label htmlFor="skill_level">Skill Level</label>
+          </div>
+          <div>
+          <label htmlFor="skill_level">Skill Level </label>
           <input
             name="skill_level"
             id="skill_level"
+            placeholder="Beginner, intermediate..."
             type="text"
-            className="info"
+            className="rounded mb-3"
             value={input.skill_level}
             onChange={handleChange}
           />
-          <label htmlFor="event_description">Key Word</label>
+          </div>
+          <div>
+          <label htmlFor="event_description">Key Word </label>
           <input
             name="event_description"
             placeholder="Key Word"
             id="event_description"
             type="text"
-            className="info"
+            className="rounded mb-3"
             value={input.event_description}
             onChange={handleChange}
           />
+          </div>
           <div>
           <label htmlFor="hobby_id">
-           Hobby Category</label>
+           Hobby Category </label>
             <select name="hobby_id"
               id="hobby_id"
+              className="rounded mb-3"
               value={input.hobby_id}
               onChange={handleChange}>
               <option placeholder="choose Hobby Category">Select Hobby Category</option>
@@ -101,11 +109,12 @@ export default function SearchForm() {
                ))}
             </select>
           </div>
+          <div>
           <label htmlFor="event_price">
             Price Range €0-{input.event_price}</label>
             <input type="range" 
             name="event_price" 
-            className="form-range" 
+            className="form-range mb-3" 
             min="0" 
             max="100" 
             step="1" 
@@ -113,13 +122,16 @@ export default function SearchForm() {
             onChange={handleChange} 
             id="event_price">
             </input>
-
-          <label htmlFor="equip_needed"></label>
-            Own equipment needed
+            </div>
+<div>
+            <label htmlFor="equip_needed"></label>
+            Own equipment needed 
             <select name="equip_needed"
             id="equip_needed"
+            className="rounded mb-3 pr-3"
             value={input.equip_needed}
             onChange={handleChange}>
+              <option placeholder="choose option">Please Choose</option>
            <option value={"1"}>
            Yes
            </option>
@@ -127,41 +139,49 @@ export default function SearchForm() {
            No
            </option>
            </select>
+           </div>
 
-          <label htmlFor="event_date">Event Date</label>
+<div>
+          <label htmlFor="event_date"></label>
+          <span>Event Date </span>
           <input
             name="event_date"
             placeholder="Event Date"
             id="event_date"
             type="date"
-            className="info"
+            className="rounded mb-3"
             value={input.event_date}
             onChange={handleChange}
           />
-
-<label htmlFor="event_time">Event Time</label>
+          </div>
+<div>
+<label htmlFor="event_time">Event Time </label>
           <input
             name="event_time"
             placeholder="Event Time"
             id="event_time"
             type="time"
-            className="info"
+            className="rounded mb-3"
             value={input.event_time}
             onChange={handleChange}
           />
-
-      
-       <button className="btn btn-secondary">Submit</button>
-        </form>
+</div>
         <div>
+       <button >Submit</button>
+       </div>
+        </form>
+
+        <div className="row mb-4">
         {events.map((event) => (
-          <div key={event.id}>
+          <div key={event.id} className="container rounded p-5 my-5 bg col-4 mb-4">
             <h2>{event.event_name}</h2>
             <p>{event.event_description}</p>
             <p>{event.event_location}</p>
+            <p>€{event.event_price}</p>
           </div>
         ))}
       </div>
-    </div>
+      </div>
+
   );
 }
