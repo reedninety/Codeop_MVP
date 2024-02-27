@@ -4,14 +4,27 @@ import { useEffect, useState } from "react";
 
 export default function NewEvent() {
 
-    const [newEvent, setNewEvent] = useState({
-  });
+  const [hobbies, setHobbies] = useState([]);
   const [input, setInput] = useState({
 event_name: "",
   event_location: "",
   event_description: "",
+  skill_level: "",
+  hobby_id: 0,
+  equip_needed: true,
 });
 
+useEffect(() => {getHobbies();}, []);
+
+const getHobbies = () => {
+  fetch("/api/hobbies")
+  .then((response) => response.json())
+  .then((hobbies) => { setHobbies(hobbies)
+  })
+  .catch((error) => {
+    console.log(error);
+});
+};
 
   async function addEvent() {
     try {
@@ -38,6 +51,7 @@ event_name: "",
       ...state,
       [name]: value,
     }));
+    console.log(value, name)
   };
 
   function handleSubmit(e){
@@ -52,7 +66,7 @@ event_name: "",
         </h1>
         <p>Can't find the exact activity you were after? Why not try and create it yourself!</p>
         <form onSubmit={handleSubmit}>
-        <label for="event_name">Event Name</label>
+        <label htmlFor="event_name">Event Name</label>
         <input
             name="event_name"
             id="event_name"
@@ -60,7 +74,7 @@ event_name: "",
             value={input.event_name}
             onChange={handleChange}
           />
-           <label for="event_description">Event Description</label>
+           <label htmlFor="event_description">Event Description</label>
           <textarea
             name="event_description"
             id="event_description"
@@ -68,7 +82,7 @@ event_name: "",
             value={input.event_description}
             onChange={handleChange}
           />
-           <label for="event_location">Event Location</label>
+           <label htmlFor="event_location">Event Location</label>
         <input
             name="event_location"
             id="event_location"
@@ -76,9 +90,63 @@ event_name: "",
             value={input.event_location}
             onChange={handleChange}
           />
+
+<label htmlFor="skill_level">Skill Level</label>
+        <input
+            name="skill_level"
+            id="skill_level"
+            type="text"
+            value={input.skill_level}
+            onChange={handleChange}
+            />
+
+            <label htmlFor="hobby_id">
+      Hobby Category
+       <select name="hobby_id"
+            id="hobby_id"
+            type="text"
+            value={input.hobby_id}
+            onChange={handleChange}>
+           {hobbies.map((hobby) => (
+      <option key={hobby.id} value={hobby.id}>
+           {hobby.hobby_category}
+      </option>
+    ))}
+       </select>
+   </label>
+
+   <label htmlFor="equip_needed">
+      Do participents need their own equipment?
+       <select name="equip_needed"
+            id="equip_needed"
+            value={input.equip_needed}
+            onChange={handleChange}>
+      <option value={true}>
+           Yes
+      </option>
+      <option value={false}>
+           No
+      </option>
+       </select>
+   </label>
+  
+  {/* <label>Own Equipment needed?</label>
+   <div className="btn-group mb-4">
+        <button
+          onClick={() => setInput(event_equip=true)}
+          className={input.event_equip ? `btn-danger btn` : `btn-outline-secondary btn`}
+        >
+          Yes
+        </button>
+        <button
+          onClick={() => setInput(event_equip=true)}
+          className={!input.event_equip ? `btn-danger btn` : `btn-outline-secondary btn`}
+        >
+          No
+        </button>
+      </div> */}
           <button>Create New Event</button>
         </form>
-        {input.event_location}
 
 
 

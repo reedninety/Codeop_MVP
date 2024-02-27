@@ -13,6 +13,7 @@ const db = require("../model/helper");
           event_crowd,
           skill_level,
           equip_needed,
+          hobby_id,
         } = req.query;
     
         // generate a dynamic query based on the query string (if the fields are present)
@@ -24,6 +25,7 @@ const db = require("../model/helper");
         if (event_crowd) query += ` AND event_crowd = "${event_crowd}"`;
         if (skill_level) query += ` AND skill_level = "${skill_level}"`;
         if (equip_needed) query += ` AND equip_needed = "${equip_needed}"`;
+        if (hobby_id) query += ` AND hobby_id = ${hobby_id}`;
     
         const searchResult = await db(query);
         //want to add price in BETWEEN once i've sorted the form out
@@ -38,9 +40,12 @@ const db = require("../model/helper");
         const { event_name,
             event_location,
             event_description,
+            skill_level,
+            hobby_id,
+            equip_needed,
            } = req.body;
             await db(
-              `INSERT INTO events (event_name, event_location, event_description) VALUES ("${event_name}", "${event_location}", "${event_description}");`
+              `INSERT INTO events (event_name, event_location, event_description, skill_level, hobby_id) VALUES ("${event_name}", "${event_location}", "${event_description}", "${skill_level}", ${hobby_id}), ${equip_needed};`
               );
     res.status(201).send({ message: "Event was inserted" });
 } catch (err) {
