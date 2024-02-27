@@ -101,7 +101,7 @@ const getHobbies = () => {
             />
 
             <label htmlFor="hobby_id">
-      Hobby Category
+      Hobby Category</label>
        <select name="hobby_id"
             id="hobby_id"
             type="text"
@@ -113,9 +113,8 @@ const getHobbies = () => {
       </option>
     ))}
        </select>
-   </label>
 
-   <label htmlFor="equip_needed">
+   <label htmlFor="equip_needed"></label>
       Do participents need their own equipment?
        <select name="equip_needed"
             id="equip_needed"
@@ -128,23 +127,7 @@ const getHobbies = () => {
            No
       </option>
        </select>
-   </label>
   
-  {/* <label>Own Equipment needed?</label>
-   <div className="btn-group mb-4">
-        <button
-          onClick={() => setInput(event_equip=true)}
-          className={input.event_equip ? `btn-danger btn` : `btn-outline-secondary btn`}
-        >
-          Yes
-        </button>
-        <button
-          onClick={() => setInput(event_equip=true)}
-          className={!input.event_equip ? `btn-danger btn` : `btn-outline-secondary btn`}
-        >
-          No
-        </button>
-      </div> */}
           <button>Create New Event</button>
         </form>
 

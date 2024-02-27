@@ -5,7 +5,7 @@ export default function SearchForm() {
 
     const [events, setEvents] = useState([]);
     const [hobbies, setHobbies] = useState([]);
-    const [input, setInput] = useState({ event_location: "", skill_level: "", hobby_id: "" });
+    const [input, setInput] = useState({ event_location: "", skill_level: "", hobby_id: "", event_price: "", equip_needed: "", event_description: ""});
 
 
     useEffect(() => {
@@ -35,12 +35,13 @@ export default function SearchForm() {
 
     const getEvents = () => {
       // const { event_location } = locInput;
-      const urlSearch = `/api/events?event_location=${input.event_location}&skill_level=${input.skill_level}&hobby_id=${input.hobby_id}`
+      const urlSearch = `/api/events?event_location=${input.event_location}&skill_level=${input.skill_level}&hobby_id=${input.hobby_id}&event_price=${input.event_price}&equip_needed=${input.equip_needed}&event_description=${input.event_description}`
       // get events filtered by input
       fetch(urlSearch)
       .then((response) => response.json())
       .then((events) => {
         setEvents(events)
+        console.log(events)
       })
       .catch((error) => {
         console.log(error);
@@ -59,6 +60,7 @@ export default function SearchForm() {
           <label htmlFor="event_location">Event Location</label>
           <input
             name="event_location"
+            placeholder="City Name"
             id="event_location"
             type="text"
             className="info"
@@ -74,23 +76,81 @@ export default function SearchForm() {
             value={input.skill_level}
             onChange={handleChange}
           />
+          <label htmlFor="event_description">Key Word</label>
+          <input
+            name="event_description"
+            placeholder="Key Word"
+            id="event_description"
+            type="text"
+            className="info"
+            value={input.event_description}
+            onChange={handleChange}
+          />
           <div>
           <label htmlFor="hobby_id">
-      Hobby Category
-       <select name="hobby_id"
-            id="hobby_id"
-            type="number"
-            value={input.hobby_id}
-            onChange={handleChange}>
-           {hobbies.map((hobby) => (
-      <option key={hobby.id} value={hobby.id}>
-           {hobby.hobby_category}
-      </option>
-    ))}
-       </select>
-   </label>
-   </div>
+           Hobby Category</label>
+            <select name="hobby_id"
+              id="hobby_id"
+              value={input.hobby_id}
+              onChange={handleChange}>
+              <option placeholder="choose Hobby Category">Select Hobby Category</option>
+              {hobbies.map((hobby) => (
+              <option key={hobby.id} value={hobby.id}>
+              {hobby.hobby_category}
+               </option>
+               ))}
+            </select>
+          </div>
+          <label htmlFor="event_price">
+            Price Range €0-{input.event_price}</label>
+            <input type="range" 
+            name="event_price" 
+            className="form-range" 
+            min="0" 
+            max="100" 
+            step="1" 
+            value={input.event_price} 
+            onChange={handleChange} 
+            id="event_price">
+            </input>
 
+          <label htmlFor="equip_needed"></label>
+            Own equipment needed
+            <select name="equip_needed"
+            id="equip_needed"
+            value={input.equip_needed}
+            onChange={handleChange}>
+           <option value={"1"}>
+           Yes
+           </option>
+           <option value={"0"}>
+           No
+           </option>
+           </select>
+
+          <label htmlFor="event_date">Event Date</label>
+          <input
+            name="event_date"
+            placeholder="Event Date"
+            id="event_date"
+            type="date"
+            className="info"
+            value={input.event_date}
+            onChange={handleChange}
+          />
+
+<label htmlFor="event_time">Event Time</label>
+          <input
+            name="event_time"
+            placeholder="Event Time"
+            id="event_time"
+            type="time"
+            className="info"
+            value={input.event_time}
+            onChange={handleChange}
+          />
+
+      
        <button className="btn btn-secondary">Submit</button>
         </form>
         <div>

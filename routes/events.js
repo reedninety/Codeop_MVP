@@ -9,11 +9,11 @@ const db = require("../model/helper");
           event_location,
           event_date,
           event_time,
-          event_enviro,
-          event_crowd,
           skill_level,
           equip_needed,
           hobby_id,
+          event_price,
+          event_description,
         } = req.query;
     
         // generate a dynamic query based on the query string (if the fields are present)
@@ -21,11 +21,12 @@ const db = require("../model/helper");
         if (event_location) query += ` AND event_location LIKE "%${event_location}%"`;
         if (event_date) query += ` AND event_date = "${event_date}"`;
         if (event_time) query += ` AND event_time = "${event_time}"`;
-        if (event_enviro) query += ` AND event_enviro = "${event_enviro}"`;
-        if (event_crowd) query += ` AND event_crowd = "${event_crowd}"`;
         if (skill_level) query += ` AND skill_level = "${skill_level}"`;
-        if (equip_needed) query += ` AND equip_needed = "${equip_needed}"`;
+        if (equip_needed) query += ` AND equip_needed = ${equip_needed}`;
         if (hobby_id) query += ` AND hobby_id = ${hobby_id}`;
+        if (event_price) query += ` AND event_price BETWEEN 0 AND ${event_price}`;
+        if (event_description) query += ` AND event_description LIKE "%${event_description}%"`;
+        
     
         const searchResult = await db(query);
         //want to add price in BETWEEN once i've sorted the form out
