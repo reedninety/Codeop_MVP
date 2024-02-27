@@ -12,6 +12,7 @@ event_name: "",
   skill_level: "",
   hobby_id: 0,
   equip_needed: "",
+  event_price: 0,
 });
 
 useEffect(() => {getHobbies();}, []);
@@ -52,7 +53,6 @@ const getHobbies = () => {
       ...state,
       [name]: value,
     }));
-    console.log(value, name)
   };
 
   function handleSubmit(e){
@@ -65,68 +65,81 @@ const getHobbies = () => {
         <h1>
         Create New Event
         </h1>
-        <p>Can't find the exact activity you were after? Why not try and create it yourself!</p>
+        <p>Can't find the exact activity you were after? Why not create it yourself!</p>
         <form onSubmit={handleSubmit}>
+          <div>
         <label htmlFor="event_name">Event Name</label>
         <input
             name="event_name"
             id="event_name"
             type="text"
-            className="rounded"
+            className="rounded mb-3"
             value={input.event_name}
             onChange={handleChange}
           />
-           <label htmlFor="event_description">Event Description</label>
-          <textarea
+          </div>
+          <div>
+           <label htmlFor="event_description"></label>
+           <span>Event Description</span> <textarea
             name="event_description"
             id="event_description"
             type="text"
-            className="rounded"
+            className="rounded mb-3"
             value={input.event_description}
             onChange={handleChange}
           />
+          </div>
+          <div>
            <label htmlFor="event_location">Event Location</label>
         <input
             name="event_location"
             id="event_location"
             type="text"
-            className="rounded"
+            className="rounded mb-3"
             value={input.event_location}
             onChange={handleChange}
           />
+          </div>
 
-<label htmlFor="skill_level">Skill Level</label>
+          <div>
+    <label htmlFor="skill_level">Skill Level</label>
         <input
             name="skill_level"
             id="skill_level"
             type="text"
-            className="rounded"
+            className="rounded mb-3"
             value={input.skill_level}
             onChange={handleChange}
             />
+            </div>
 
+            <div>
             <label htmlFor="hobby_id">
       Hobby Category</label>
        <select name="hobby_id"
             id="hobby_id"
             type="text"
-            className="rounded"
+            className="rounded mb-3"
             value={input.hobby_id}
             onChange={handleChange}>
+              <option placeholder="choose Hobby Category">Select Hobby Category</option>
            {hobbies.map((hobby) => (
       <option key={hobby.id} value={hobby.id}>
            {hobby.hobby_category}
       </option>
     ))}
        </select>
+       </div>
 
+       <div>
    <label htmlFor="equip_needed"></label>
       Do participents need their own equipment?
        <select name="equip_needed"
             id="equip_needed"
-            className="rounded"
+            className="rounded mb-3"
             value={input.equip_needed}
             onChange={handleChange}>
+              <option placeholder="choose option">Please Choose</option>
       <option value={"1"}>
            Yes
       </option>
@@ -134,8 +147,23 @@ const getHobbies = () => {
            No
       </option>
        </select>
-  
+       </div>
+
+       <div>
+       <label htmlFor="event_price">How much is this Event? €</label>
+        <input
+            name="event_price"
+            id="event_price"
+            type="text"
+            className="rounded mb-3"
+            value={input.event_price}
+            onChange={handleChange}
+            />
+            </div>
+
+            <div>
           <button>Create New Event</button>
+          </div>
         </form>
 
 

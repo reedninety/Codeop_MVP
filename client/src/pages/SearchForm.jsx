@@ -116,7 +116,7 @@ export default function SearchForm() {
             name="event_price" 
             className="form-range mb-3" 
             min="0" 
-            max="100" 
+            max="50" 
             step="1" 
             value={input.event_price} 
             onChange={handleChange} 

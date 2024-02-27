@@ -44,9 +44,10 @@ const db = require("../model/helper");
             skill_level,
             hobby_id,
             equip_needed,
+            event_price,
            } = req.body;
             await db(
-              `INSERT INTO events (event_name, event_location, event_description, skill_level, hobby_id, equip_needed) VALUES ("${event_name}", "${event_location}", "${event_description}", "${skill_level}", ${hobby_id}, ${equip_needed});`
+              `INSERT INTO events (event_name, event_location, event_description, skill_level, hobby_id, equip_needed, event_price) VALUES ("${event_name}", "${event_location}", "${event_description}", "${skill_level}", ${hobby_id}, ${equip_needed}, ${event_price});`
               );
     res.status(201).send({ message: "Event was inserted" });
 } catch (err) {
