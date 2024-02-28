@@ -12,7 +12,8 @@ router.get("/", async function (req, res) {
   }
 });
 
-//GET all events from one hobby category
+//Simone this next endpoint is no longer being used but was connecting my events and hobbies
+//GET all events from one hobby category 
 router.get("/:id", async function (req, res) {
   try {
     const hobbyCats = await db(

@@ -1,3 +1,5 @@
+Simone this isn't my README file I just haven't touched it because I was scared it would break something
+
 # React + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.

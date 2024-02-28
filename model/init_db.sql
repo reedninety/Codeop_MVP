@@ -37,6 +37,9 @@ CREATE TABLE user_faves(
     `user_id` BIGINT UNSIGNED NOT NULL,
     `event_id` BIGINT UNSIGNED NOT NULL
 );
+
+--CREATING TABLE RELATIONSHIPS--
+
     CREATE INDEX `user_faves_user_id_index` ON `user_faves` (`user_id`);
 
     CREATE INDEX `user_faves_event_id_index` ON `user_faves` (`event_id`);
@@ -48,6 +51,7 @@ ALTER TABLE
 ALTER TABLE
     `user_faves` ADD CONSTRAINT `user_faves_event_id_foreign` FOREIGN KEY(`event_id`) REFERENCES `events`(`id`) ON DELETE CASCADE;
 
+--DATABASE INSERTIONS--
 INSERT INTO hobbies (hobby_category) VALUES ('Outdoor sports');
 INSERT INTO hobbies (hobby_category) VALUES ('Indoor sports');
 INSERT INTO hobbies (hobby_category) VALUES ('Food and Drink');

@@ -15,6 +15,7 @@ event_name: "",
   event_price: 0,
 });
 
+//Gets all hobbies so they appear in their dropdown menu
 useEffect(() => {getHobbies();}, []);
 
 const getHobbies = () => {
@@ -27,6 +28,7 @@ const getHobbies = () => {
 });
 };
 
+//currently, every input needs to be filled in on the form for this function to work - or else it will not add anything and return a 500 error (because the useState of input has set values)
   async function addEvent() {
     try {
       const response = await fetch("/api/events", {
@@ -39,9 +41,7 @@ const getHobbies = () => {
 
       const data = await response.json();
       console.log(data);
-      
 
-    //   setNewEvent(data);
     } catch (err) {
       console.log(err);
     }

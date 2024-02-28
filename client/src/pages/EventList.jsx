@@ -1,6 +1,7 @@
 import React from 'react'
 import { useEffect, useState } from 'react'
 
+//SIMONE YOU CAN IGNORE THIS PAGE - THIS IS FROM AN EARLIER VERSION OF THE PROJECT BUT DOES NOTHING NOW!!
 export default function EventList() {
 
     const [events, setEvents] = useState([]);

@@ -3,11 +3,13 @@ import { useEffect, useState } from "react";
 
 export default function SearchForm() {
 
+
     const [events, setEvents] = useState([]);
     const [hobbies, setHobbies] = useState([]);
+    //all inputs only work if they are set as empty strings here
     const [input, setInput] = useState({ event_location: "", skill_level: "", hobby_id: "", event_price: "", equip_needed: "", event_description: ""});
 
-
+//Shows all events and all hobbies (in it's dropdown) when the page is loaded
     useEffect(() => {
       getEvents();
     }, []);
@@ -16,6 +18,7 @@ export default function SearchForm() {
       getHobbies();
     }, []);
 
+//manipulates the input state as the user types/changes the form
     const handleChange = (event) => {
       setInput((state) => ({
         ...state,
@@ -23,6 +26,7 @@ export default function SearchForm() {
       }));
     };
 
+//fetches all hobbies from database
     const getHobbies = () => {
       fetch("/api/hobbies")
       .then((response) => response.json())
@@ -33,14 +37,14 @@ export default function SearchForm() {
     });
     };
 
+//fetches all events which then can be filtered. if the specified filters exist in the query, then they are applied to the fetch
     const getEvents = () => {
-      // const { event_location } = locInput;
       const urlSearch = `/api/events?event_location=${input.event_location}&skill_level=${input.skill_level}&hobby_id=${input.hobby_id}&event_price=${input.event_price}&equip_needed=${input.equip_needed}&event_description=${input.event_description}`
-      // get events filtered by input
       fetch(urlSearch)
       .then((response) => response.json())
       .then((events) => {
         setEvents(events)
+        //test console log
         console.log(events)
       })
       .catch((error) => {
@@ -48,6 +52,7 @@ export default function SearchForm() {
       });
     };
   
+    // prevents page refreshing immediately and runs get events
     const handleSubmit = (event) => {
       event.preventDefault();
       getEvents();

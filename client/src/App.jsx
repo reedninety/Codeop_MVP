@@ -6,6 +6,7 @@ import EventList from "./pages/EventList";
 import SearchForm from "./pages/SearchForm";
 import NewEvent from "./pages/NewEvent";
 
+//Simone please ignore AllHobbies and EventList - they don't do anything but I haven't deleted them because it compplained at me when I did and I might use them later etc
 export default function App() {
   return (
     <div className = "App">
