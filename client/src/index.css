@@ -1,3 +1,5 @@
+
+
 :root {
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
@@ -7,11 +9,11 @@
 
 a {
   font-weight: 500;
-  color: rgb(122, 80, 122);
+  color: rgb(213, 159, 10);
   text-decoration: inherit;
 }
 a:hover {
-  color: rgb(186, 59, 186);
+  color: rgb(254, 186, 0);
 }
 
 body {
@@ -20,9 +22,10 @@ body {
   place-items: center;
   min-width: 320px;
   min-height: 100vh;
-  background-color: #44b09e;
-  background-image: linear-gradient(315deg, #44b09e 0%, #e0d2c7 74%);
+  background-color: #7f5a83;
+  background-image: linear-gradient(315deg, #7f5a83 0%, #0d324d 74%);;
 }
+
 
 .bg {
   background-color: rgb(184, 156, 156);
@@ -31,7 +34,7 @@ body {
 h1 {
   font-size: 3.2em;
   line-height: 1.1;
-  color: darkmagenta;
+  color: rgb(236, 177, 16);
   font-weight: bold;
   font-family: Arial, Helvetica, sans-serif
 }
@@ -64,4 +67,8 @@ text {
   font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
-
+.salsa-regular {
+  font-family: "Salsa", cursive;
+  font-weight: 400;
+  font-style: normal;
+}

@@ -2,7 +2,7 @@ import React from 'react'
 import { useEffect, useState } from 'react'
 import { Routes, Route, Link } from 'react-router-dom'
 
-
+//SIMONE YOU CAN IGNORE THIS PAGE - THIS IS FROM AN EARLIER VERSION OF THE PROJECT BUT DOES NOTHING NOW!!
 export default function AllHobbies() {
 
     const [hobbies, setHobbies] = useState([]);
