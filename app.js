@@ -3,6 +3,7 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const cors = require('cors');
+const { sequelize } = require('./models');
 
 var eventsRouter = require('./routes/events');
 var hobbiesRouter = require('./routes/hobbies');
@@ -19,4 +20,4 @@ app.use('/api/hobbies', hobbiesRouter);
 
 app.use(cors());
 
-module.exports = app;
+module.exports = { app, sequelize } ;
