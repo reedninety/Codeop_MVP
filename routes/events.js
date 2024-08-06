@@ -5,6 +5,7 @@ const Sequelize = require("sequelize");
 
 const models = require("../models");
 
+//get all events
 router.get("/", async function (req, res, next) {
   try {
     const events = await models.Event.findAll();
@@ -12,7 +13,61 @@ router.get("/", async function (req, res, next) {
   }catch (error) {
     res.status(500).send(error);
   }
-})
+});
 
+//post new event
+router.post("/", async function (req, res, next){
+  const { eventName, 
+    eventPrice, 
+    eventLocation, 
+    eventDescription, 
+    eventTime, 
+    eventDate, 
+    skillLevel,
+    CategoryId, 
+    equipNeeded }
+     = req.body; 
+  try {
+    const event = await models.Event.create({ eventName, 
+      eventPrice, 
+      eventLocation, 
+      eventDescription, 
+      eventTime, 
+      eventDate, 
+      skillLevel, 
+      CategoryId,
+      equipNeeded })
+    res.send(event);
+  } catch (error) {
+    res.status(500).send(error);
+  }
+});
+
+// Get all events by a certain Category ID 
+router.get("/categories", async function (req, res) {
+  try {
+    const { category } = req.query;
+    const response = await models.Event.findAll({
+      where: { CategoryId: category },
+    });
+
+    res.send(response);
+  } catch (err) {
+    res.status(500).send(err);
+  }
+});
+
+//delete event - not yet tested
+router.delete("/deleted", async function (req, res) {
+  try {
+    const { event } = req.query;
+    const response = await models.Event.destroy({
+      where: { id: event}
+    });
+    res.send(response);
+  } catch (err) {
+    res.status(500).send(err);
+  }
+})
 
 module.exports = router;

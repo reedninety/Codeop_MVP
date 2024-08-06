@@ -1,5 +1,6 @@
 import React from 'react'
 import { useEffect, useState } from 'react'
+import "../App.css";
 
 //SIMONE YOU CAN IGNORE THIS PAGE - THIS IS FROM AN EARLIER VERSION OF THE PROJECT BUT DOES NOTHING NOW!!
 export default function EventList() {
@@ -20,7 +21,7 @@ export default function EventList() {
       }
   return (
     <div>
-        <h1>All Upcoming Events</h1>
+        <h1 className="homepage-title">All Upcoming Events</h1>
    <ul>
         {events.map((event) => (
           <h3 key={event.id}>

@@ -33,11 +33,11 @@ This full-stack MVP is a hobby-finding interactive app where the user can search
 ```bash
   DB_HOST=HOSTNAME
   DB_USER=USERNAME
-  DB_NAME=alys_mvp
+  DB_NAME=saturnmvp
   DB_PASS=YOURPASSWORD
 ```
 
-- Run the following commands to your MySQL console: `CREATE DATABASE alys_mvp;` and then `USE alys_mvp;`
+- Run the following commands to your MySQL console: `CREATE DATABASE saturnmvp;` and then `USE saturnmvp;`
 - Run `npm run migrate` in the project folder of this repository, in a new terminal window. This will create three tables in your database: "hobbies," "user," and "events."
 - Make sure you understand how the tables are constructed. In your MySQL console, you can run `DESCRIBE tablename;` to see the structure of each table. Please mind that "tablename" in `DESCRIBE tablename` needs to be replaced by the name of the table that you want to describe.
 

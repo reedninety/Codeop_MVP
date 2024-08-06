@@ -37,17 +37,6 @@ Object.keys(db).forEach(modelName => {
   }
 });
 
-sequelize.sync({ force: true })
-  .then(() => {
-    console.log('Database & tables created!');
-    // Start the server after the database sync
-    app.listen(port, () => {
-      console.log(`Server is running on port ${port}`);
-    });
-  })
-  .catch(err => {
-    console.error('Unable to sync the database:', err);
-  });
 
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;

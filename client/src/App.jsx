@@ -1,31 +1,33 @@
 import './App.css';
+import React from 'react';
 import { Routes, Route, Link } from "react-router-dom";
 import Home from "./pages/Home";
+import About from "./pages/About";
 import AllHobbies from "./pages/AllHobbies";
 import EventList from "./pages/EventList";
 import SearchForm from "./pages/SearchForm";
 import NewEvent from "./pages/NewEvent";
+import Profile from "./pages/Profile";
+import NavBar from "../src/components/NavBar";
 
-//Simone please ignore AllHobbies and EventList - they don't do anything but I haven't deleted them because it compplained at me when I did and I might use them later etc
+
 export default function App() {
   return (
     <div className = "App">
-      <nav>
-          <Link to="/"> Home </Link>
-          {/* <Link to="/all-hobbies"> Hobby List </Link> */}
-          {/* <Link to="/event-list"> All Events </Link> */}
-          <Link to="/event-search"> All Hobbies </Link>
-          <Link to="/new-event"> Create New Event </Link>
-      </nav>
+
+      <NavBar expand="lg" className="bg-body-tertiary"/>
 
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/about" element={<About />} />
         <Route path="/all-hobbies" element={<AllHobbies />} />
         <Route path="/event-list" element={<EventList />} />
         <Route path="/event-search" element={<SearchForm />} />
         <Route path="/new-event" element={<NewEvent />} />
+        <Route path="/profile" element={<Profile />} />
       </Routes>
   
     </div>
   );
 }
+

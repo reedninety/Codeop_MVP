@@ -1,8 +1,12 @@
 #root {
-  max-width: 1280px;
+  /* max-width: 1280px; */
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
+  color: rgb(236, 184, 0);
+    font-family: "Caprasimo", serif;
+    /* font-weight: 400;
+    font-style: normal; */
 }
 
 .card {
@@ -12,3 +16,122 @@
 .read-the-docs {
   color: #888;
 }
+  
+.homepage-title {
+  place-items: center;
+  font-size: 5.2em;
+  line-height: 1.1;
+  color: #E25D13;
+  font-style: normal;
+  font-weight: 400;
+  text-align: center;
+  margin: 30px
+}
+
+.navbar {
+  background-color: rgb(142,183,195);
+  border-color: rgb(142,183,195);
+  border-width: thick;
+  border-radius: 25px;
+  color: #EFE8DB;
+  margin: 3px auto;
+}
+
+a {
+  font-family: "Caprasimo", serif;
+  font-weight: 500;
+  color: rgb(236, 184, 0);
+  text-decoration: inherit;
+}
+a:hover {
+  color: rgb(254, 186, 0);
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  background-color: #EFE8DB;
+}
+
+h1 {
+  font-family: "Caprasimo", serif;
+  font-size: 3.2em;
+  line-height: 1.1;
+  color: #E25D13;
+  font-style: normal;
+  font-weight: 400;
+}
+
+.button {
+  border-radius: 8px;
+  border: 3px solid;
+  border-color: #E25D13;
+  color: #E25D13;
+  padding: 14px 40px;
+  font-size: 1em;
+  font-weight: 400;
+  font-family: "Caprasimo", serif;
+  background-color: #EFE8DB;
+  cursor: pointer;
+  transition: border-color 0.25s;
+}
+button:hover {
+  background-color: #E25D13;
+  color: #EFE8DB;
+}
+button:focus,
+button:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+}
+
+input, textarea {
+  background-color: #EFE8DB;
+  border: 1px solid #E25D13;
+}
+
+.option-custom {
+  background-color: #EFE8DB;
+}
+
+.overflow {
+  display: block;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+
+}
+
+.range-custom {
+  accent-color: rgb(236, 184, 0);
+}
+
+.cat-box {
+  border: 3px solid;
+  border-radius: 8px;
+  background-color: #E25D13;
+  border-color: #E25D13;
+  opacity: 0.65; 
+  padding: 20%;
+  margin: 10px;
+  color: #EFE8DB;
+  text-align: center;
+  font-size: 2.3em;
+  place-items: center;
+}
+
+.cat-box:hover {
+  background-color: #EFE8DB;
+  color:#E25D13;
+  border: 3px solid;
+  border-radius: 8px;
+  border-color: #E25D13;
+  opacity: 0.8;
+}
+
+/* .cat-text {
+  color: #EFE8DB;
+  text-align: center;
+  font-size: 2.3em;
+  place-items: center;
+} */

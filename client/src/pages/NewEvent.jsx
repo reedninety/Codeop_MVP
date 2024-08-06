@@ -1,5 +1,6 @@
 import React from 'react';
 import { useEffect, useState } from "react";
+import "../App.css";
 
 
 export default function NewEvent() {
@@ -62,13 +63,11 @@ const getHobbies = () => {
 
   return (
     <div>
-        <h1>
-        Create New Event
-        </h1>
-        <p>Can't find the exact activity you were after? Why not create it yourself!</p>
+        <h2 className="homepage-title">Create New Event</h2>
+        <p className="pb-4">Can't find the exact activity you were after? Why not create it yourself!</p>
         <form onSubmit={handleSubmit}>
           <div>
-        <label htmlFor="event_name">Event Name</label>
+        <label htmlFor="event_name" className="pr-3">Event Name</label>
         <input
             name="event_name"
             id="event_name"
@@ -80,7 +79,8 @@ const getHobbies = () => {
           </div>
           <div>
            <label htmlFor="event_description"></label>
-           <span>Event Description</span> <textarea
+           <label className="pr-3">Event Description</label>
+            <textarea
             name="event_description"
             id="event_description"
             type="text"
@@ -90,7 +90,7 @@ const getHobbies = () => {
           />
           </div>
           <div>
-           <label htmlFor="event_location">Event Location</label>
+           <label htmlFor="event_location" className="pr-3">Event Location</label>
         <input
             name="event_location"
             id="event_location"
@@ -102,7 +102,7 @@ const getHobbies = () => {
           </div>
 
           <div>
-    <label htmlFor="skill_level">Skill Level</label>
+    <label htmlFor="skill_level" className="pr-3">Skill Level</label>
         <input
             name="skill_level"
             id="skill_level"
@@ -114,7 +114,7 @@ const getHobbies = () => {
             </div>
 
             <div>
-            <label htmlFor="hobby_id">
+            <label htmlFor="hobby_id" className="pr-3">
       Hobby Category</label>
        <select name="hobby_id"
             id="hobby_id"
@@ -132,14 +132,13 @@ const getHobbies = () => {
        </div>
 
        <div>
-   <label htmlFor="equip_needed"></label>
-      Do participents need their own equipment?
+   <label htmlFor="equip_needed" className="pr-3"> Do participents need their own equipment?</label>
        <select name="equip_needed"
             id="equip_needed"
             className="rounded mb-3"
             value={input.equip_needed}
             onChange={handleChange}>
-              <option placeholder="choose option">Please Choose</option>
+              <option className="option-custom" placeholder="choose option">Please Choose</option>
       <option value={"1"}>
            Yes
       </option>
@@ -150,19 +149,19 @@ const getHobbies = () => {
        </div>
 
        <div>
-       <label htmlFor="event_price">How much is this Event? €</label>
+       <label htmlFor="event_price" className="pr-3">How much is this Event?</label> <span className="pr-1">£</span>
         <input
             name="event_price"
             id="event_price"
             type="text"
-            className="rounded mb-3"
+            className="rounded mb-3 pl-2"
             value={input.event_price}
             onChange={handleChange}
             />
             </div>
 
             <div>
-          <button>Create New Event</button>
+          <button className="button">Create New Event</button>
           </div>
         </form>
 

@@ -1,27 +1,16 @@
 var express = require("express");
 var router = express.Router();
-const db = require("../model/helper");
+// const db = require("../model/helper");
 
-//GET all hobbies
-router.get("/", async function (req, res) {
-  try {
-    const allHobbies = await db("SELECT * FROM hobbies ORDER BY id ASC;");
-    res.send(allHobbies.data);
-  } catch (err) {
-    res.status(500).send(err);
-  }
-});
+const models = require("../models");
 
-//Simone this next endpoint is no longer being used but was connecting my events and hobbies
-//GET all events from one hobby category 
-router.get("/:id", async function (req, res) {
+//  GET categories, select * from categories
+router.get("/types", async function (req, res, next) {
   try {
-    const hobbyCats = await db(
-      "SELECT hobbies.*, events.event_name, event_description FROM hobbies LEFT JOIN events ON hobbies.id = events.hobby_id ORDER BY events.id;"
-    );
-    res.send(hobbyCats.data);
-  } catch (err) {
-    res.status(500).send(err);
+    const response = await models.Category.findAll();
+    res.json(response);
+  } catch (error) {
+    res.status(500).send(error);
   }
 });
 

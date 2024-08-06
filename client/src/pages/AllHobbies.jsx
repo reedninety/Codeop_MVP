@@ -1,54 +1,43 @@
 import React from 'react'
 import { useEffect, useState } from 'react'
 import { Routes, Route, Link } from 'react-router-dom'
+import axios from "axios";
+import "../App.css";
 
-//SIMONE YOU CAN IGNORE THIS PAGE - THIS IS FROM AN EARLIER VERSION OF THE PROJECT BUT DOES NOTHING NOW!!
 export default function AllHobbies() {
 
     const [hobbies, setHobbies] = useState([]);
-    const [hobbyEvents, setHobbyEvents] = useState ([]);
 
-    useEffect(() => {getHobbies();}, []);
-
-    const getHobbies = () => {
-        fetch("/api/hobbies")
-        .then((response) => response.json())
-        .then((hobbies) => { setHobbies(hobbies)
-        })
-        .catch((error) => {
+    const getHobbies = async () => {
+      try{
+        const response = await axios.get("/api/hobbies/types");
+        // console.log(response);
+        setHobbies(response.data);
+      } catch (error) {
           console.log(error);
-      });
       };
-
-      const hobbyCategories = () => {
-        fetch("api/hobbies/:id")
-        .then((response) => response.json())
-        .then((hobbyEvents) => { setHobbyEvents(setHobbyEvents)
-            console.log(hobbyEvents)
-        })
-        .catch((error) => {
-          console.log(error);
-      });
       };
-
-      const takeToForm = () => {
+      useEffect(() => {getHobbies();}, []);
+      const takeToCategory = () => {
         console.log("I've been clicked!")
       };
 
 
   return (
     <div>
-    <h1>Hobby Categories</h1>
+    <h1 className="homepage-title">Hobby Categories</h1>
     <ul>
-      <dl>
+      <dl className="grid grid-cols-3 gap-4">
     {hobbies.map((hobby) => (
-      <h3 key={hobby.id} onClick={takeToForm}>
-           {hobby.hobby_category}
-      </h3>
+      <div className="cat-box">
+      <div className="cat-text text-center" key={hobby.id} onClick={takeToCategory}>
+           {hobby.categoryName}
+      </div>
+      </div>
     ))}
     </dl>
   </ul>
-
   </div>
+ 
   )
 }

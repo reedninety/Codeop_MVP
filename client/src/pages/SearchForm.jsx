@@ -60,10 +60,10 @@ export default function SearchForm() {
   
     return (
       <div>
-        <h1> Search Form </h1>
+        <h1 className="homepage-title mt-3 mb-4"> Search Form </h1>
         <form onSubmit={handleSubmit}>
           <div>
-          <label htmlFor="event_location">Event Location </label>
+          <label htmlFor="event_location" className="pr-3">Event Location </label>
           <input
             name="event_location"
             placeholder="City Name"
@@ -75,7 +75,7 @@ export default function SearchForm() {
           />
           </div>
           <div>
-          <label htmlFor="skill_level">Skill Level </label>
+          <label htmlFor="skill_level" className="pr-3">Skill Level </label>
           <input
             name="skill_level"
             id="skill_level"
@@ -87,7 +87,7 @@ export default function SearchForm() {
           />
           </div>
           <div>
-          <label htmlFor="event_description">Key Word </label>
+          <label htmlFor="event_description" className="pr-3">Key Word </label>
           <input
             name="event_description"
             placeholder="Key Word"
@@ -99,7 +99,7 @@ export default function SearchForm() {
           />
           </div>
           <div>
-          <label htmlFor="hobby_id">
+          <label htmlFor="hobby_id" className="pr-3">
            Hobby Category </label>
             <select name="hobby_id"
               id="hobby_id"
@@ -115,11 +115,11 @@ export default function SearchForm() {
             </select>
           </div>
           <div>
-          <label htmlFor="event_price">
+          <label htmlFor="event_price" className="pr-3">
             Price Range €0-{input.event_price}</label>
             <input type="range" 
             name="event_price" 
-            className="form-range mb-3" 
+            className="range-custom mb-3" 
             min="0" 
             max="50" 
             step="1" 
@@ -129,14 +129,14 @@ export default function SearchForm() {
             </input>
             </div>
 <div>
-            <label htmlFor="equip_needed"></label>
+            <label htmlFor="equip_needed" className="pr-3"></label>
             Own equipment needed 
             <select name="equip_needed"
             id="equip_needed"
             className="rounded mb-3 pr-3"
             value={input.equip_needed}
             onChange={handleChange}>
-              <option placeholder="choose option">Please Choose</option>
+              <option placeholder="choose option" className="option-custom">Please Choose</option>
            <option value={"1"}>
            Yes
            </option>
@@ -148,7 +148,7 @@ export default function SearchForm() {
 
 <div>
           <label htmlFor="event_date"></label>
-          <span>Event Date </span>
+          <span className="pr-3">Event Date </span>
           <input
             name="event_date"
             placeholder="Event Date"
@@ -160,7 +160,7 @@ export default function SearchForm() {
           />
           </div>
 <div>
-<label htmlFor="event_time">Event Time </label>
+<label htmlFor="event_time" className="pr-3">Event Time </label>
           <input
             name="event_time"
             placeholder="Event Time"
@@ -172,7 +172,7 @@ export default function SearchForm() {
           />
 </div>
         <div>
-       <button >Submit</button>
+       <button className="button">Submit</button>
        </div>
         </form>
 
