@@ -9,18 +9,20 @@ import SearchForm from "./pages/SearchForm";
 import NewEvent from "./pages/NewEvent";
 import Profile from "./pages/Profile";
 import NavBar from "../src/components/NavBar";
+import Hobby from "./pages/Hobby";
 
 
 export default function App() {
   return (
     <div className = "App">
 
-      <NavBar expand="lg" className="bg-body-tertiary"/>
+      <NavBar />
 
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
-        <Route path="/all-hobbies" element={<AllHobbies />} />
+        <Route path="/hobbies" element={<AllHobbies />} />    
+        <Route path="/hobbies/:id" element={<Hobby />}/>
         <Route path="/event-list" element={<EventList />} />
         <Route path="/event-search" element={<SearchForm />} />
         <Route path="/new-event" element={<NewEvent />} />

@@ -3,14 +3,19 @@
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
-  color: #E25D13;
-    font-family: "Caprasimo", serif;
+  /* color: #E25D13;
+    font-family: "Caprasimo", serif; */
     /* font-weight: 400;
     font-style: normal; */
 }
 
-.card {
-  padding: 2em;
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  background-color: #FDFBEE;
+  color: #E25D13;
+  font-family: "Caprasimo", serif;
 }
 
 .homepage-title {
@@ -25,12 +30,13 @@
 }
 
 .navbar {
-  background-color: rgb(142,183,195);
-  border-color: rgb(142,183,195);
+  background-color: #89BBBD;
+  border-color: #89BBBD;
   border-width: thick;
   border-radius: 25px;
-  color: #EFE8DB;
+  color: #FDFBEE;
   margin: 3px auto;
+  font-size: 1.3em;
 }
 
 a {
@@ -41,15 +47,9 @@ a {
   text-decoration: inherit;
 }
 a:hover {
-  color: rgb(254, 186, 0);
+  color: #037488;
 }
 
-body {
-  margin: 0;
-  min-width: 320px;
-  min-height: 100vh;
-  background-color: #EFE8DB;
-}
 
 h1 {
   font-family: "Caprasimo", serif;
@@ -58,6 +58,11 @@ h1 {
   color: #E25D13;
   font-style: normal;
   font-weight: 400;
+}
+
+.sub-heading {
+  font-size: 2.2em;
+  color: #e78361;
 }
 
 .button {
@@ -69,26 +74,22 @@ h1 {
   font-size: 1em;
   font-weight: 400;
   font-family: "Caprasimo", serif;
-  background-color: #EFE8DB;
+  background-color: #FDFBEE;
   cursor: pointer;
   transition: border-color 0.25s;
 }
 button:hover {
   background-color: #E25D13;
-  color: #EFE8DB;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+  color: #FDFBEE;
 }
 
 input, textarea {
-  background-color: #EFE8DB;
+  background-color: #FDFBEE;
   border: 1px solid #E25D13;
 }
 
 .option-custom {
-  background-color: #EFE8DB;
+  background-color: #FDFBEE;
 }
 
 .overflow {
@@ -106,29 +107,27 @@ input, textarea {
 .cat-box {
   border: 3px solid;
   border-radius: 8px;
-  background-color: #E25D13;
-  border-color: #E25D13;
-  opacity: 0.65; 
+  background-color: #E78361;
+  border-color: #E78361;
+  opacity: 0.85; 
   padding: 20%;
   margin: 10px;
-  color: #EFE8DB;
+  color: #FDFBEE;
   text-align: center;
-  font-size: 2.3em;
+  font-size: 2.2em;
   place-items: center;
 }
 
 .cat-box:hover {
-  background-color: #EFE8DB;
-  color:#E25D13;
+  background-color: #FDFBEE;
+  color:#E78361;
   border: 3px solid;
   border-radius: 8px;
-  border-color: #E25D13;
-  opacity: 0.8;
+  border-color: #E78361;
+  opacity: 1;
 }
 
-/* .cat-text {
-  color: #EFE8DB;
-  text-align: center;
-  font-size: 2.3em;
-  place-items: center;
-} */
+::placeholder {
+ color: #89BBBD !important;
+ opacity: 0.7;
+}

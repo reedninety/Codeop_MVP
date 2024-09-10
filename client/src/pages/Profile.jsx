@@ -96,9 +96,9 @@ export default function Profile() {
 
         <Row className="text-center">
           <Col className="profile-container">
-            <h3>My Service Requests</h3>
+            <h3>My Interests</h3>
 
-            <div> Upcoming service requests</div>
+            <div> Events You Might Be Interested In</div>
             <Row className="justify-content-md-center">
               {userServices.map((userService, i) => (
                 <Col className="sm-3 p-0">
@@ -110,7 +110,7 @@ export default function Profile() {
                           {userService.service_name}
                         </div>
 
-                        <Link to={`/jobs/${userService.id}`}>See request</Link>
+                        <Link to={`/jobs/${userService.id}`}>See Event</Link>
                       </Card.Text>
                     </Card.Body>
                   </Card>
@@ -119,13 +119,13 @@ export default function Profile() {
             </Row>
 
             <Button className="profile-button m-2" onClick={handleRequestClick}>
-              Create New Request
+              Create New Event
             </Button>
           </Col>
 
           <Col className="profile-container">
-            <h3>My Assigned Services</h3>
-            <div>Upcoming jobs</div>
+            <h3>My Events</h3>
+            <div>Upcoming Events</div>
             <Row className="justify-content-md-center">
               {userJobs.map((userJob, i) => (
                 <Col className="sm-3 p-0">
@@ -136,7 +136,7 @@ export default function Profile() {
                         <div className="" key={i}>
                           {userJob.service_name}
                         </div>
-                        <Link to={`/jobs/${userJob.id}`}>See job</Link>
+                        <Link to={`/jobs/${userJob.id}`}>See Event</Link>
                       </Card.Text>
                     </Card.Body>
                   </Card>
@@ -144,19 +144,11 @@ export default function Profile() {
               ))}
             </Row>
             <Button className="profile-button m-2" onClick={handleJobsClick}>
-              View Job Marketplace
+              View All Available Hobbies
             </Button>
           </Col>
         </Row>
         <Row className="text-center">
-          <Col className="profile-container">
-            <h3>Points</h3>
-            <p>Here is your current point score:</p>
-            <h4>{userInfo.total_points}</h4>
-            <Button className="profile-button m-2" onClick={handleRewardsClick}>
-              Get Rewards
-            </Button>
-          </Col>
         </Row>
       </Container>
     </div>

@@ -1,12 +1,13 @@
 import React from 'react'
 import { useEffect, useState } from 'react'
-import { Routes, Route, Link } from 'react-router-dom'
+import { Routes, Route, useNavigate } from 'react-router-dom'
 import axios from "axios";
 import "../App.css";
 
 export default function AllHobbies() {
 
     const [hobbies, setHobbies] = useState([]);
+    const navigate = useNavigate()
 
     const getHobbies = async () => {
       try{
@@ -17,9 +18,12 @@ export default function AllHobbies() {
           console.log(error);
       };
       };
-      useEffect(() => {getHobbies();}, []);
-      const takeToCategory = () => {
-        console.log("I've been clicked!")
+      
+  useEffect(() => {getHobbies();}, []);
+   
+  const takeToCategory = (id) => {
+    console.log("I've been clicked!")
+    navigate(`/hobbies/${id}`)
       };
 
 
@@ -29,8 +33,8 @@ export default function AllHobbies() {
     <ul>
       <dl className="grid grid-cols-3 gap-4">
     {hobbies.map((hobby) => (
-      <div className="cat-box">
-      <div className="cat-text text-center" key={hobby.id} onClick={takeToCategory}>
+      <div className="cat-box"onClick={() => takeToCategory(hobby.id)}>
+      <div className="cat-text text-center" key={hobby.id}>
            {hobby.categoryName}
       </div>
       </div>

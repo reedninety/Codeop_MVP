@@ -9,7 +9,7 @@ export default function NavBar() {
       <nav className="navbar items-center justify-between w-full p-6">
    <Link to="/"> Home </Link>
         <Link to="/about"> About </Link>
-          <Link to="/all-hobbies"> Hobby Categories</Link>
+          <Link to="/hobbies"> Hobby Categories</Link>
           {/* <Link to="/event-list"> All Events </Link> */}
           <Link to="/event-search"> Search Events </Link>
           <Link to="/new-event"> Create New Event </Link>

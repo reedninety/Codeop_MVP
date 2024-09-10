@@ -7,20 +7,33 @@ export default function NewEvent() {
 
   const [hobbies, setHobbies] = useState([]);
   const [input, setInput] = useState({
-event_name: "",
-  event_location: "",
-  event_description: "",
-  skill_level: "",
-  hobby_id: 0,
-  equip_needed: "",
-  event_price: 0,
+eventName: "",
+  eventLocation: "",
+  eventDescription: "",
+  skillLevel: "",
+  CategoryId: 0,
+  equipNeeded: "",
+  eventPrice: 0,
 });
 
+//Create today's date for the date input field min-value
+function yyyymmdd(dateIn) {
+  let yyyy = dateIn.getFullYear();
+
+  let mm = dateIn.getMonth() + 1; // getMonth() is zero-based
+  if (mm < 10) {
+    mm = "0" + mm;
+  }
+  let dd = dateIn.getDate();
+  return String(`${yyyy}-${mm}-${dd}`); // Leading zeros for mm and dd
+}
+var today = new Date();
+let date = yyyymmdd(today);
 //Gets all hobbies so they appear in their dropdown menu
 useEffect(() => {getHobbies();}, []);
 
 const getHobbies = () => {
-  fetch("/api/hobbies")
+  fetch("/api/hobbies/types")
   .then((response) => response.json())
   .then((hobbies) => { setHobbies(hobbies)
   })
@@ -29,7 +42,6 @@ const getHobbies = () => {
 });
 };
 
-//currently, every input needs to be filled in on the form for this function to work - or else it will not add anything and return a 500 error (because the useState of input has set values)
   async function addEvent() {
     try {
       const response = await fetch("/api/events", {
@@ -57,8 +69,8 @@ const getHobbies = () => {
   };
 
   function handleSubmit(e){
-    e.preventDefault()
-    addEvent()
+    e.preventDefault();
+      addEvent()
   }
 
   return (
@@ -67,77 +79,96 @@ const getHobbies = () => {
         <p className="pb-4">Can't find the exact activity you were after? Why not create it yourself!</p>
         <form onSubmit={handleSubmit}>
           <div>
-        <label htmlFor="event_name" className="pr-3">Event Name</label>
+        <label htmlFor="eventName" className="pr-3">Event Name</label>
         <input
-            name="event_name"
-            id="event_name"
+            name="eventName"
+            id="eventName"
             type="text"
             className="rounded mb-3"
             value={input.event_name}
             onChange={handleChange}
+            required
           />
           </div>
           <div>
-           <label htmlFor="event_description"></label>
+           <label htmlFor="eventDescription"></label>
            <label className="pr-3">Event Description</label>
             <textarea
-            name="event_description"
-            id="event_description"
+            name="eventDescription"
+            id="eventDescription"
             type="text"
             className="rounded mb-3"
-            value={input.event_description}
+            value={input.eventDescription}
             onChange={handleChange}
+            required
           />
           </div>
           <div>
-           <label htmlFor="event_location" className="pr-3">Event Location</label>
+           <label htmlFor="eventLocation" className="pr-3">Event Location</label>
         <input
-            name="event_location"
-            id="event_location"
+            name="eventLocation"
+            id="eventLocation"
             type="text"
             className="rounded mb-3"
-            value={input.event_location}
+            value={input.eventLocation}
             onChange={handleChange}
+            required
           />
           </div>
 
           <div>
-    <label htmlFor="skill_level" className="pr-3">Skill Level</label>
-        <input
-            name="skill_level"
-            id="skill_level"
+    <label htmlFor="skillLevel" className="pr-3">Skill Level</label>
+        <select
+            name="skillLevel"
+            id="skillLevel"
             type="text"
             className="rounded mb-3"
-            value={input.skill_level}
+            value={input.skillLevel}
             onChange={handleChange}
-            />
+            required>
+    <option className="option-custom" placeholder="choose option">Please Choose</option>
+      <option value={"Beginner"}>
+           Beginner
+      </option>
+      <option value={"Intermediate"}>
+           Intermediate
+      </option>
+      <option value={"Advanced"}>
+           Advanced
+      </option>
+      <option value={"All Levels"}>
+           All Levels
+      </option>
+              </select>
             </div>
 
             <div>
-            <label htmlFor="hobby_id" className="pr-3">
+            <label htmlFor="categoryId" className="pr-3">
       Hobby Category</label>
-       <select name="hobby_id"
-            id="hobby_id"
+       <select name="categoryId"
+            id="categoryId"
             type="text"
             className="rounded mb-3"
-            value={input.hobby_id}
-            onChange={handleChange}>
+            value={input.categoryId}
+            onChange={handleChange}
+            required>
               <option placeholder="choose Hobby Category">Select Hobby Category</option>
            {hobbies.map((hobby) => (
       <option key={hobby.id} value={hobby.id}>
-           {hobby.hobby_category}
+           {hobby.categoryName}
       </option>
     ))}
        </select>
        </div>
 
        <div>
-   <label htmlFor="equip_needed" className="pr-3"> Do participents need their own equipment?</label>
-       <select name="equip_needed"
-            id="equip_needed"
+   <label htmlFor="equipNeeded" className="pr-3"> Do participents need their own equipment?</label>
+       <select name="equipNeeded"
+            id="equipNeeded"
             className="rounded mb-3"
-            value={input.equip_needed}
-            onChange={handleChange}>
+            value={input.equipNeeded}
+            onChange={handleChange}
+            required>
               <option className="option-custom" placeholder="choose option">Please Choose</option>
       <option value={"1"}>
            Yes
@@ -151,17 +182,41 @@ const getHobbies = () => {
        <div>
        <label htmlFor="event_price" className="pr-3">How much is this Event?</label> <span className="pr-1">£</span>
         <input
-            name="event_price"
-            id="event_price"
-            type="text"
+            name="eventPrice"
+            id="eventPrice"
+            type="number"
             className="rounded mb-3 pl-2"
-            value={input.event_price}
+            value={input.eventPrice}
             onChange={handleChange}
+            required
             />
             </div>
-
+        <div>
+       <label htmlFor="eventDate" className="pr-3">When is this Event?</label>
+        <input
+            name="eventDate"
+            id="eventDate"
+            type="date"
+            className="rounded mb-3 pl-2"
+            value={input.eventDate}
+            onChange={handleChange}
+            required
+            />
+            </div>
             <div>
-          <button className="button">Create New Event</button>
+       <label htmlFor="eventDate" className="pr-3">What time does the Event start?</label>
+        <input
+            name="eventTate"
+            id="eventTate"
+            type="time"
+            className="rounded mb-3 pl-2"
+            value={input.eventTime}
+            onChange={handleChange}
+            required
+            />
+            </div>
+            <div>
+          <button className="button" type="submit">Create New Event</button>
           </div>
         </form>
 

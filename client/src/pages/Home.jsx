@@ -10,7 +10,6 @@ export default function Home() {
         Saturn's Always Somewhere
       </h1>
 </div>
-<button>So let's go</button>
     </div>
   )
 }

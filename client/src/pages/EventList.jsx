@@ -25,8 +25,8 @@ export default function EventList() {
    <ul>
         {events.map((event) => (
           <h3 key={event.id}>
-            {event.event_name} 
-            <p>{event.event_description} </p>
+            {event.eventName} 
+            <p>{event.eventDescription} </p>
           </h3>
         ))}
       </ul>

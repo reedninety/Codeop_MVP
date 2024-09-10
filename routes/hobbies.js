@@ -14,4 +14,17 @@ router.get("/types", async function (req, res, next) {
   }
 });
 
+router.get("/details/:id", async function (req, res) {
+  try {
+    const { id } = req.params;
+    const response = await models.Category.findOne({
+      where: { id: id },
+    });
+
+    res.send(response);
+  } catch (err) {
+    res.status(500).send(err);
+  }
+});
+
 module.exports = router;
