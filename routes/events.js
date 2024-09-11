@@ -28,7 +28,8 @@ router.post("/", async function (req, res, next){
     equipNeeded }
      = req.body; 
   try {
-    const event = await models.Event.create({ eventName, 
+    const event = await models.Event.create({ 
+      eventName, 
       eventPrice, 
       eventLocation, 
       eventDescription, 
@@ -44,11 +45,25 @@ router.post("/", async function (req, res, next){
 });
 
 // Get all events by a certain Category ID 
-router.get("/categories", async function (req, res) {
+router.get("/category/:id", async function (req, res) {
   try {
-    const { category } = req.query;
+    const { id } = req.params;
     const response = await models.Event.findAll({
-      where: { CategoryId: category },
+      where: { CategoryId: id },
+    });
+
+    res.send(response);
+  } catch (err) {
+    res.status(500).send(err);
+  }
+});
+
+// Get all information from one service by ID - working 18/03
+router.get("/details/:id", async function (req, res) {
+  try {
+    const { id } = req.params;
+    const response = await models.Event.findOne({
+      where: { id: id },
     });
 
     res.send(response);

@@ -5,17 +5,14 @@ export default function SearchForm() {
 
 
     const [events, setEvents] = useState([]);
-    const [hobbies, setHobbies] = useState([]);
+    const [categories, setCategories] = useState([]);
     //all inputs only work if they are set as empty strings here
-    const [input, setInput] = useState({ event_location: "", skill_level: "", hobby_id: "", event_price: "", equip_needed: "", event_description: ""});
+    const [input, setInput] = useState({ eventLocation: "", skillLevel: "", categoryId: "", eventPrice: "", equipNeeded: "", eventDescription: ""});
 
 //Shows all events and all hobbies (in it's dropdown) when the page is loaded
     useEffect(() => {
       getEvents();
-    }, []);
-
-    useEffect(() => {
-      getHobbies();
+      getCategories();
     }, []);
 
 //manipulates the input state as the user types/changes the form
@@ -27,10 +24,10 @@ export default function SearchForm() {
     };
 
 //fetches all hobbies from database
-    const getHobbies = () => {
-      fetch("/api/hobbies")
+    const getCategories = () => {
+      fetch("/api/hobbies/types")
       .then((response) => response.json())
-      .then((hobbies) => { setHobbies(hobbies)
+      .then((categories) => { setCategories(categories)
       })
       .catch((error) => {
         console.log(error);
@@ -39,7 +36,7 @@ export default function SearchForm() {
 
 //fetches all events which then can be filtered. if the specified filters exist in the query, then they are applied to the fetch
     const getEvents = () => {
-      const urlSearch = `/api/events?event_location=${input.event_location}&skill_level=${input.skill_level}&hobby_id=${input.hobby_id}&event_price=${input.event_price}&equip_needed=${input.equip_needed}&event_description=${input.event_description}`
+      const urlSearch = `/api/events?eventLocation=${input.eventLocation}&skillLevel=${input.skillLevel}&categoryId=${input.categoryId}&eventPrice=${input.eventPrice}&equipNeeded=${input.equipNeeded}&eventDescription=${input.eventDescription}`
       fetch(urlSearch)
       .then((response) => response.json())
       .then((events) => {
@@ -63,28 +60,41 @@ export default function SearchForm() {
         <h1 className="homepage-title mt-3 mb-4"> Search Form </h1>
         <form onSubmit={handleSubmit}>
           <div>
-          <label htmlFor="event_location" className="pr-3">Event Location </label>
+          <label htmlFor="eventLocation" className="pr-3">Event Location </label>
           <input
-            name="event_location"
+            name="eventLocation"
             placeholder="City Name"
-            id="event_location"
+            id="eventLocation"
             type="text"
             className="rounded mb-3"
-            value={input.event_location}
+            value={input.eventLocation}
             onChange={handleChange}
           />
           </div>
           <div>
-          <label htmlFor="skill_level" className="pr-3">Skill Level </label>
-          <input
-            name="skill_level"
-            id="skill_level"
+          <label htmlFor="skillLevel" className="pr-3">Skill Level </label>
+          <select
+            name="skillLevel"
+            id="skillLevel"
             placeholder="Beginner, intermediate..."
             type="text"
             className="rounded mb-3"
-            value={input.skill_level}
-            onChange={handleChange}
-          />
+            value={input.skillLevel}
+            onChange={handleChange}>
+            <option className="option-custom" placeholder="choose option">Please Choose</option>
+      <option value={"Beginner"}>
+           Beginner
+      </option>
+      <option value={"Intermediate"}>
+           Intermediate
+      </option>
+      <option value={"Advanced"}>
+           Advanced
+      </option>
+      <option value={"All Levels"}>
+           All Levels
+      </option>
+     </select>
           </div>
           <div>
           <label htmlFor="event_description" className="pr-3">Key Word </label>
@@ -99,42 +109,42 @@ export default function SearchForm() {
           />
           </div>
           <div>
-          <label htmlFor="hobby_id" className="pr-3">
+          <label htmlFor="categoryId" className="pr-3">
            Hobby Category </label>
-            <select name="hobby_id"
-              id="hobby_id"
+            <select name="categoryId"
+              id="categoryId"
               className="rounded mb-3"
-              value={input.hobby_id}
+              value={input.categoryId}
               onChange={handleChange}>
               <option placeholder="choose Hobby Category">Select Hobby Category</option>
-              {hobbies.map((hobby) => (
-              <option key={hobby.id} value={hobby.id}>
-              {hobby.hobby_category}
+              {categories.map((category) => (
+              <option key={category.id} value={categoryId}>
+              {category.categoryId}
                </option>
                ))}
             </select>
           </div>
           <div>
-          <label htmlFor="event_price" className="pr-3">
-            Price Range €0-{input.event_price}</label>
+          <label htmlFor="eventPrice" className="pr-3">
+            Price Range £0-{input.event_price}</label>
             <input type="range" 
-            name="event_price" 
+            name="eventPrice" 
             className="range-custom mb-3" 
             min="0" 
             max="50" 
             step="1" 
-            value={input.event_price} 
+            value={input.eventPrice} 
             onChange={handleChange} 
-            id="event_price">
+            id="eventPrice">
             </input>
             </div>
 <div>
-            <label htmlFor="equip_needed" className="pr-3"></label>
+            <label htmlFor="equipNeeded" className="pr-3"></label>
             Own equipment needed 
-            <select name="equip_needed"
-            id="equip_needed"
+            <select name="equipNeeded"
+            id="equipNeeded"
             className="rounded mb-3 pr-3"
-            value={input.equip_needed}
+            value={input.equipNeeded}
             onChange={handleChange}>
               <option placeholder="choose option" className="option-custom">Please Choose</option>
            <option value={"1"}>
@@ -147,27 +157,27 @@ export default function SearchForm() {
            </div>
 
 <div>
-          <label htmlFor="event_date"></label>
+          <label htmlFor="eventDate"></label>
           <span className="pr-3">Event Date </span>
           <input
-            name="event_date"
+            name="eventDate"
             placeholder="Event Date"
-            id="event_date"
+            id="eventDate"
             type="date"
             className="rounded mb-3"
-            value={input.event_date}
+            value={input.eventDate}
             onChange={handleChange}
           />
           </div>
 <div>
-<label htmlFor="event_time" className="pr-3">Event Time </label>
+<label htmlFor="eventTime" className="pr-3">Event Time </label>
           <input
-            name="event_time"
+            name="eventTime"
             placeholder="Event Time"
-            id="event_time"
+            id="eventTime"
             type="time"
             className="rounded mb-3"
-            value={input.event_time}
+            value={input.eventTime}
             onChange={handleChange}
           />
 </div>
@@ -179,10 +189,10 @@ export default function SearchForm() {
         <div className="row mb-4">
         {events.map((event) => (
           <div key={event.id} className="container rounded p-5 my-5 bg col-4 mb-4">
-            <h2>{event.event_name}</h2>
-            <p>{event.event_description}</p>
-            <p>{event.event_location}</p>
-            <p>€{event.event_price}</p>
+            <h2>{event.eventName}</h2>
+            <p>{event.eventDescription}</p>
+            <p>{event.eventLocation}</p>
+            <p>£{event.eventPrice}</p>
           </div>
         ))}
       </div>

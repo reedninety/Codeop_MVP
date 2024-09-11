@@ -27,4 +27,18 @@ router.get("/details/:id", async function (req, res) {
   }
 });
 
+// Get all events by a certain Category ID 
+router.get("/details/:id/events", async function (req, res) {
+  try {
+    const { id } = req.params;
+    const response = await models.Event.findAll({
+      where: { CategoryId: id },
+    });
+
+    res.send(response);
+  } catch (err) {
+    res.status(500).send(err);
+  }
+});
+
 module.exports = router;

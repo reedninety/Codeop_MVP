@@ -204,10 +204,10 @@ const getHobbies = () => {
             />
             </div>
             <div>
-       <label htmlFor="eventDate" className="pr-3">What time does the Event start?</label>
+       <label htmlFor="eventTime" className="pr-3">What time does the Event start?</label>
         <input
-            name="eventTate"
-            id="eventTate"
+            name="eventTime"
+            id="eventTime"
             type="time"
             className="rounded mb-3 pl-2"
             value={input.eventTime}

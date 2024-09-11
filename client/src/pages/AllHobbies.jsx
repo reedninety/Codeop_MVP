@@ -22,7 +22,6 @@ export default function AllHobbies() {
   useEffect(() => {getHobbies();}, []);
    
   const takeToCategory = (id) => {
-    console.log("I've been clicked!")
     navigate(`/hobbies/${id}`)
       };
 
